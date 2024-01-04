@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import {postApiV1Signup } from "./controllers/user.js"
+import { postApiV1Signup } from "./controllers/user.js";
 dotenv.config();
 
 const app = express();
@@ -19,9 +19,16 @@ const connDB = async () => {
   }
 };
 connDB();
-// User endpoints
-app.post("/api/v1/signups", postApiV1Signup)
+// health api
+app.get("/health", async (req, res) => {
+  res.json({
+    status: "ok",
+    message: "Server Health Good",
+  });
+});
 
+// User endpoints
+app.post("/api/v1/signups", postApiV1Signup);
 
 const PORT = process.env.PORT || 5001;
 
