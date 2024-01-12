@@ -16,7 +16,8 @@ const io = new Server(5002, {
 io.on("connection", (socket) => {
   console.log("a user connected");
   socket.on("message", (data) => {
-    console.log(data);
+    console.log(data)
+    io.emit("message", data);
   });
 });
 app.get("/sendMessage", (req, res) => {
