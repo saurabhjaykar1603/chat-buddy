@@ -16,14 +16,18 @@ function Login() {
       showToast("Password is required", "warning", 4000);
       return;
     }
-  
+
     try {
       const response = await axios.post("/api/v1/logins", { email, password });
       if (response?.data?.success) {
         localStorage.setItem("user", JSON.stringify(response?.data?.data));
         window.location.href = "/";
       } else {
-        showToast(response?.data?.message || "An error occurred", "warning", 4000);
+        showToast(
+          response?.data?.message || "An error occurred",
+          "warning",
+          4000
+        );
       }
     } catch (error) {
       if (error.response && error.response.status === 401) {
@@ -33,7 +37,6 @@ function Login() {
       }
     }
   };
-  
 
   return (
     <div className="h-screen bg-slate-900 overflow-hidden  ">
@@ -63,8 +66,8 @@ function Login() {
         </button>
 
         <p className="signup-link">
-          Already have an account?
-          <Link to="/login">login</Link>
+          No account ? {""}
+          <Link to="/Signup">Signup</Link>
         </p>
       </form>
     </div>

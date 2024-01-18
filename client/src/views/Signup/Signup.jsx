@@ -85,8 +85,7 @@ function Signup() {
         </button>
 
         <p className="signup-link">
-          No account?
-          <Link to="/login">login</Link>
+          Already have an account ? <Link to="/login">login</Link>
         </p>
       </form>
     </div>
